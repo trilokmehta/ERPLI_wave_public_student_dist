@@ -1,0 +1,1 @@
+import{d as e}from"./interactive-Cdjdmhdv.js";import{r as t,t as n}from"./explorerLevels-Bim6gbjc.js";import{t as r}from"./LevelPath-BTzi6gL-.js";var i=e();function a(){return(0,i.jsx)(r,{levels:n,worlds:t,stagesPerWorld:18,routeBase:`/vedic-math/explorer/level`,title:`Explorer Path`,emoji:`🚀`,showSutra:!0})}export{a as default};

@@ -1,0 +1,1 @@
+import{d as e}from"./interactive-Cdjdmhdv.js";import{r as t,t as n}from"./juniorLevels-CZ35pFEy.js";import{t as r}from"./LevelPath-BTzi6gL-.js";var i=e();function a(){return(0,i.jsx)(r,{levels:n,worlds:t,stagesPerWorld:18,routeBase:`/vedic-math/junior/level`,title:`Junior Path`,emoji:`🐣`})}export{a as default};

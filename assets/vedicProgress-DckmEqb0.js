@@ -1,0 +1,1 @@
+var e=`vedic_progress_v1`;function t(){try{return JSON.parse(localStorage.getItem(e))||{}}catch{return{}}}function n(t){try{localStorage.setItem(e,JSON.stringify(t))}catch{}}function r(e){return t()[e]||0}function i(e,r){let i=t(),a=Math.max(i[e]||0,r);return i[e]=a,n(i),a}export{i as n,r as t};
