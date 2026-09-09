@@ -1,0 +1,1 @@
+function e(e,t){if(e==null||e===``)return!0;let n=Number(e);return Number.isFinite(n)?t>=n:!0}function t(e,t=`All levels`){if(e==null||e===``)return t;let n=Number(e);return Number.isFinite(n)?`Level ${Math.trunc(n)}`:String(e)}export{e as n,t};
