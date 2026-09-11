@@ -1,0 +1,128 @@
+import{r as e}from"./rolldown-runtime-S-ySWqyJ.js";import{Dt as t,L as n,M as r,R as i,nt as a,ot as o,u as s,v as c}from"./interactive-VrFACgqL.js";import{n as l,t as u}from"./contentLevels-CDV_YUuY.js";var d=e(t(),1),f=`6.0.2`,p=`https://source.zoom.us/${f}`,m=`zoom-inline-root-style`,h=`zoom-inline-root`;function g(){if(document.getElementById(m))return;let e=document.createElement(`style`);e.id=m,e.textContent=`
+    /* :not(:fullscreen) matters. Zoom's own full-screen button calls
+       requestFullscreen() on this same root; without the guard these
+       !important rules pinned it back into the panel box, so the button
+       toggled Zoom's internal state and nothing on screen ever changed. */
+    #zmmtg-root.${h}:not(:fullscreen) {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 1 !important;
+    }
+
+    /* In real full screen the browser sizes the top-layer element itself —
+       just stay out of its way. */
+    #zmmtg-root.${h}:fullscreen {
+      width: 100% !important;
+      height: 100% !important;
+      background: #111827;
+    }
+  `,document.head.appendChild(e)}function _(e){return new Promise((t,n)=>{if(document.querySelector(`script[src="${e}"]`))return t();let r=document.createElement(`script`);r.src=e,r.async=!1,r.onload=t,r.onerror=()=>n(Error(`Failed to load ${e}`)),document.head.appendChild(r)})}function v(e){if(document.querySelector(`link[href="${e}"]`))return;let t=document.createElement(`link`);t.rel=`stylesheet`,t.href=e,document.head.appendChild(t)}var y=`.full-screen-widget`;function b(){let e=document.getElementById(`zmmtg-root`);if(!e)return()=>{};let t=!1,n=()=>{if(t||document.fullscreenElement)return;let n=e.querySelector(y),r=n?.getAttribute(`aria-label`)??``;!n||!/exit/i.test(r)||(t=!0,n.click())};if(n(),t)return()=>{};let r=new MutationObserver(()=>{n(),t&&r.disconnect()});r.observe(e,{childList:!0,subtree:!0});let i=()=>r.disconnect();return setTimeout(i,3e4),i}function x(){let e=document.getElementById(`zmmtg-root`);return e||(e=document.createElement(`div`),e.id=`zmmtg-root`,e.style.display=`none`,document.body.appendChild(e)),e}function S(e){let t=x();return g(),t.classList.add(h),t.style.display=`block`,e&&t.parentNode!==e&&e.appendChild(t),t}function C(){let e=document.getElementById(`zmmtg-root`);e&&(e.classList.remove(h),e.style.display=`none`,e.parentNode!==document.body&&document.body.appendChild(e))}var w=null;function T(){return w||(w=(async()=>{v(`${p}/css/react-select.css`),x(),await _(`${p}/lib/vendor/react.min.js`),await _(`${p}/lib/vendor/react-dom.min.js`),await _(`${p}/lib/vendor/redux.min.js`),await _(`${p}/lib/vendor/redux-thunk.min.js`),await _(`${p}/lib/vendor/lodash.min.js`),await _(`https://source.zoom.us/zoom-meeting-${f}.min.js`);let e=window.ZoomMtg;if(!e)throw w=null,Error(`Zoom Meeting SDK failed to load.`);return e.setZoomJSLib(`${p}/lib`,`/av`),e.preLoadWasm(),e.prepareWebSDK(),e})(),w)}var E=i(),D=`classId`;function O(){let{institute:e,user:t,profile:i}=n(),o=c(i?.current_level),[u,f]=(0,d.useState)([]),[p,m]=(0,d.useState)(()=>X()),[h,g]=(0,d.useState)(`upcoming`),[_,v]=(0,d.useState)(()=>Date.now()),[y,b]=(0,d.useState)(!0),[x,S]=(0,d.useState)(null);(0,d.useEffect)(()=>{let t=!0;async function n(){b(!0),S(null);let n=await a(e?.id);t&&(f(n.data),m(e=>e&&n.data.some(t=>t.id===e)?e:null),S(n.error),b(!1))}return n(),()=>{t=!1}},[e?.id]),(0,d.useEffect)(()=>{let e=window.setInterval(()=>v(Date.now()),60*1e3);return()=>window.clearInterval(e)},[]);let C=(0,d.useMemo)(()=>u.filter(e=>l(e.level,o)),[u,o]),w=C.find(e=>e.id===p);(0,d.useEffect)(()=>(document.body.classList.toggle(`live-class-focus`,!!p),()=>document.body.classList.remove(`live-class-focus`)),[p]),(0,d.useEffect)(()=>{function e(){m(X())}return window.addEventListener(`popstate`,e),()=>window.removeEventListener(`popstate`,e)},[]);let T=(0,d.useMemo)(()=>C.filter(e=>{let t=new Date(e.starts_at).getTime();return h===`past`?t<_:t>=_}),[C,h,_]),D=C.find(e=>q(e,_).key===`live`);function O(e){m(e),Z(e)}function M(){m(null),Z(null)}return(0,E.jsxs)(`div`,{className:`page-wrap live-page ${w?`live-page-focus`:``}`,children:[(0,E.jsx)(`style`,{children:$}),(0,E.jsx)(r,{}),(0,E.jsx)(`div`,{className:`live-container ${w?`live-container-focus`:``}`,style:Q.container,children:w?(0,E.jsx)(j,{liveClass:w,user:t,onBack:M}):(0,E.jsxs)(E.Fragment,{children:[(0,E.jsxs)(`div`,{className:`live-header-banner premium-banner`,style:{position:`relative`,overflow:`hidden`,borderRadius:`26px`,padding:`32px 24px`,border:`1px solid rgba(255, 255, 255, 0.82)`,display:`flex`,alignItems:`center`,justifyContent:`space-between`,gap:`20px`,marginBottom:`8px`},children:[(0,E.jsxs)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`8px`,minWidth:0},children:[(0,E.jsx)(`span`,{className:`setup-badge`,style:{background:`var(--light-blue)`,color:`var(--primary-blue)`,display:`inline-block`,alignSelf:`flex-start`,margin:0},children:`Virtual Classroom`}),(0,E.jsx)(`h1`,{style:{fontFamily:`Sora, sans-serif`,fontSize:`2.2rem`,fontWeight:`900`,color:`var(--dark-blue)`,margin:0},children:`Live Classes`}),(0,E.jsx)(`p`,{style:{color:`var(--text-light)`,fontSize:`1.05rem`,fontWeight:`500`,margin:0,lineHeight:1.4},children:`Join scheduled live interactive sessions with your instructors and classmates.`})]}),(0,E.jsx)(s,{variant:`live-banner`,size:300})]}),D?(0,E.jsx)(k,{item:D,now:_,onOpen:()=>O(D.id)}):null,(0,E.jsxs)(`div`,{className:`live-tabs`,style:Q.tabs,children:[(0,E.jsx)(`button`,{className:`live-tab-btn ${h===`upcoming`?`active`:``}`,style:{...Q.tabButton,...h===`upcoming`?Q.tabButtonActive:{}},onClick:()=>g(`upcoming`),children:`Upcoming`}),(0,E.jsx)(`button`,{className:`live-tab-btn ${h===`past`?`active`:``}`,style:{...Q.tabButton,...h===`past`?Q.tabButtonActive:{}},onClick:()=>g(`past`),children:`Past`})]}),y?(0,E.jsx)(R,{icon:`fa-circle-notch fa-spin`,title:`Loading live classes...`,fill:!0}):null,x?(0,E.jsx)(R,{icon:`fa-triangle-exclamation`,title:x.message,tone:`error`,fill:!0}):null,!y&&!x&&!T.length?(0,E.jsx)(R,{variant:`live-empty`,title:u.length?`No live classes for Level ${o} yet.`:`No live classes found.`,subtitle:u.length?`More classes unlock as your level goes up.`:h===`past`?`Classes you've attended will show up here.`:`Check back soon — new classes are scheduled regularly.`,fill:!0}):(0,E.jsx)(`div`,{className:`live-grid`,style:Q.grid,children:T.map(e=>(0,E.jsx)(A,{item:e,now:_,onOpen:()=>O(e.id)},e.id))})]})})]})}function k({item:e,now:t,onOpen:n}){let r=q(e,t);return(0,E.jsxs)(`section`,{style:Q.hero,children:[(0,E.jsxs)(`div`,{children:[(0,E.jsxs)(`div`,{style:Q.liveBadge,children:[(0,E.jsx)(`span`,{style:Q.dot}),r.label]}),(0,E.jsx)(`h2`,{style:Q.heroTitle,children:e.title}),(0,E.jsxs)(`p`,{children:[Y(e.starts_at),` | `,J(e.live_class_batches)]})]}),(0,E.jsx)(`button`,{className:`btn btn-secondary`,style:Q.heroButton,onClick:n,children:`Enter Classroom`})]})}function A({item:e,now:t,onOpen:n}){let r=q(e,t);return(0,E.jsxs)(`article`,{className:`live-card`,style:Q.card,children:[(0,E.jsx)(`div`,{style:Q.cardIcon,children:(0,E.jsx)(`i`,{className:`fa-solid fa-chalkboard-user`})}),(0,E.jsxs)(`div`,{style:Q.cardBody,children:[(0,E.jsxs)(`div`,{style:Q.cardTop,children:[(0,E.jsx)(`h2`,{className:`live-card-title`,style:Q.cardTitle,title:e.title,children:e.title}),(0,E.jsx)(`span`,{style:{...Q.statusPill,background:r.bg,color:r.color},children:r.label})]}),(0,E.jsxs)(`p`,{style:Q.meta,children:[u(e.level),` | `,Y(e.starts_at)]}),(0,E.jsx)(`p`,{style:Q.meta,children:J(e.live_class_batches)}),(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.button,onClick:n,children:`Open Class`})]})]})}function j({liveClass:e,user:t,onBack:n}){return(0,E.jsxs)(`div`,{className:`live-classroom`,style:Q.classroom,children:[(0,E.jsxs)(`button`,{className:`live-back`,style:Q.backButton,onClick:n,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-arrow-left`}),`All classes`]}),(0,E.jsx)(`div`,{className:`live-classroom-layout`,style:Q.classroomLayout,children:(0,E.jsxs)(`main`,{className:`live-stage-panel`,style:Q.stagePanel,children:[(0,E.jsxs)(`div`,{className:`live-stage-heading`,style:Q.stageHeading,children:[(0,E.jsxs)(`div`,{children:[(0,E.jsx)(`h1`,{className:`live-stage-title`,style:Q.stageTitle,children:e.title}),(0,E.jsx)(`p`,{style:Q.meta,children:Y(e.starts_at)})]}),(0,E.jsx)(`span`,{style:Q.zoomBadge,children:`Live Class`})]}),V(e)?W(e)===`embed`?(0,E.jsx)(I,{liveClass:e,user:t},e.id):(0,E.jsx)(N,{liveClass:e}):K(e)?(0,E.jsx)(L,{liveClass:e,user:t}):(0,E.jsx)(M,{liveClass:e})]})})]})}function M({liveClass:e}){let t=e.meeting_url||e.provider_meeting?.[0]?.join_url;return(0,E.jsx)(`section`,{className:`live-zoom-shell`,style:Q.zoomShell,children:(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:Q.zoomStart,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-circle-play`}),(0,E.jsx)(`h2`,{children:`Ready for class?`}),t?(0,E.jsxs)(E.Fragment,{children:[(0,E.jsx)(`p`,{children:`Your class opens in a new tab on the meeting provider.`}),(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.zoomStartButton,onClick:()=>window.open(t,`_blank`,`noopener,noreferrer`),children:`Join Class`})]}):(0,E.jsx)(`p`,{children:`No meeting link has been added for this class yet. Please check back later.`})]})})}function N({liveClass:e}){let t=e.meeting_url||`https://${z}/${H(e)}`,n=U(e);return(0,E.jsx)(`section`,{className:`live-zoom-shell`,style:Q.zoomShell,children:(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:Q.zoomStart,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-circle-play`}),(0,E.jsx)(`h2`,{children:`Ready for class?`}),(0,E.jsx)(`p`,{children:`Your class opens in a new tab. Keep this window open to come back.`}),n?(0,E.jsxs)(`div`,{style:Q.jitsiPassBox,children:[(0,E.jsx)(`span`,{style:Q.jitsiPassLabel,children:`Room password`}),(0,E.jsx)(`strong`,{style:Q.jitsiPassValue,children:n}),(0,E.jsx)(`span`,{style:Q.jitsiPassHint,children:`Enter this if Jitsi asks for a password.`})]}):null,(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.zoomStartButton,onClick:()=>window.open(t,`_blank`,`noopener,noreferrer`),children:`Join Class`})]})})}var P=null;function F(){return P||(P=_(`https://${z}/external_api.js`).then(()=>{if(!window.JitsiMeetExternalAPI)throw P=null,Error(`Jitsi API failed to load.`);return window.JitsiMeetExternalAPI}),P)}function I({liveClass:e,user:t}){let n=(0,d.useRef)(null),r=(0,d.useRef)(null),[i,a]=(0,d.useState)(`loading`),[o,s]=(0,d.useState)(null);(0,d.useEffect)(()=>{let i=!1;return F().then(o=>{if(i||!n.current)return;let s=U(e),c=new o(z,{roomName:H(e),parentNode:n.current,userInfo:{displayName:t?.user_metadata?.full_name??t?.email??`Student`,email:t?.email??``},configOverwrite:{prejoinPageEnabled:!0}});r.current=c,s&&(c.addEventListener(`passwordRequired`,()=>{c.executeCommand(`password`,s)}),c.addEventListener(`participantRoleChanged`,e=>{e.role===`moderator`&&c.executeCommand(`password`,s)})),c.addEventListener(`videoConferenceJoined`,()=>{i||a(`joined`)}),a(`joined`)}).catch(e=>{i||(s(e?.message??`Unable to start the Jitsi classroom.`),a(`failed`))}),()=>{i=!0,r.current&&=(r.current.dispose(),null)}},[e.id]);let c=e.meeting_url||`https://${z}/${H(e)}`;return i===`failed`?(0,E.jsx)(`section`,{className:`live-zoom-shell`,style:Q.zoomShell,children:(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:Q.zoomStart,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-triangle-exclamation`}),(0,E.jsx)(`h2`,{children:`Class could not start here`}),(0,E.jsx)(`p`,{children:o}),(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.zoomStartButton,onClick:()=>window.open(c,`_blank`,`noopener,noreferrer`),children:`Open Class Link`})]})}):(0,E.jsxs)(`section`,{className:`live-zoom-shell`,style:{...Q.zoomShell,placeItems:`stretch`,position:`relative`},children:[i===`loading`?(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:{...Q.zoomStart,position:`absolute`,inset:0},children:[(0,E.jsx)(`i`,{className:`fa-solid fa-circle-notch fa-spin`}),(0,E.jsx)(`h2`,{children:`Preparing live class`})]}):null,(0,E.jsx)(`div`,{ref:n,style:Q.jitsiRoot})]})}function L({liveClass:e,user:t}){let n=(0,d.useRef)(null),r=(0,d.useRef)(null),[i,a]=(0,d.useState)(`idle`),[s,c]=(0,d.useState)(null),[l,u]=(0,d.useState)(!1);(0,d.useEffect)(()=>{if(!l)return;let e=()=>{document.fullscreenElement||u(!1)},t=e=>{e.key===`Escape`&&u(!1)};return document.addEventListener(`fullscreenchange`,e),document.addEventListener(`keydown`,t),()=>{document.removeEventListener(`fullscreenchange`,e),document.removeEventListener(`keydown`,t)}},[l]),(0,d.useEffect)(()=>()=>{document.fullscreenElement&&document.exitFullscreen().catch(()=>{})},[]);function f(){let e=!l;u(e),e?r.current?.requestFullscreen?.().catch(()=>{}):document.fullscreenElement&&document.exitFullscreen().catch(()=>{})}(0,d.useEffect)(()=>C,[]);async function p(){a(`loading`),c(null);let r=await o(e.id);if(r.error){c(r.error.message),a(`failed`);return}try{let e=await T(),{sdkKey:i,signature:o,meetingNumber:s,password:c}=r.data;S(n.current),await new Promise((n,r)=>{e.init({leaveUrl:`${window.location.origin}/live-classes`,patchJsMedia:!0,success:()=>{e.join({sdkKey:i,signature:o,meetingNumber:s,passWord:c??``,userName:t?.user_metadata?.full_name??t?.email??`Student`,userEmail:t?.email??``,success:n,error:r})},error:r})}),a(`joined`),b()}catch(e){C(),c(e?.reason??e?.message??`Unable to join Zoom classroom.`),a(`failed`)}}let m=e.provider_meeting?.[0]?.join_url||e.meeting_url,h=i===`loading`||i===`joined`;return(0,E.jsxs)(`section`,{ref:r,className:`live-zoom-shell`,style:{...Q.zoomShell,...h?{placeItems:`stretch`,position:`relative`}:{},...l?Q.zoomShellMaximised:{}},children:[h?(0,E.jsx)(`button`,{type:`button`,className:`live-zoom-maximise`,style:Q.maximiseButton,onClick:f,title:l?`Exit full screen`:`Full screen`,"aria-label":l?`Exit full screen`:`Full screen`,children:(0,E.jsx)(`i`,{className:`fa-solid ${l?`fa-compress`:`fa-expand`}`})}):null,i===`idle`?(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:Q.zoomStart,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-circle-play`}),(0,E.jsx)(`h2`,{children:`Ready for class?`}),(0,E.jsx)(`p`,{children:`Join your live class here without leaving the app.`}),(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.zoomStartButton,onClick:p,children:`Join Class`})]}):null,i===`loading`||i===`joined`?(0,E.jsx)(`div`,{ref:n,style:{...Q.zoomRoot,...l?Q.zoomRootMaximised:{}},children:i===`loading`?(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:{...Q.zoomStart,position:`absolute`,inset:0},children:[(0,E.jsx)(`i`,{className:`fa-solid fa-circle-notch fa-spin`}),(0,E.jsx)(`h2`,{children:`Preparing live class`})]}):null}):null,i===`failed`?(0,E.jsxs)(`div`,{className:`live-zoom-start`,style:Q.zoomStart,children:[(0,E.jsx)(`i`,{className:`fa-solid fa-triangle-exclamation`}),(0,E.jsx)(`h2`,{children:`Class could not start here`}),(0,E.jsx)(`p`,{children:s}),m?(0,E.jsx)(`button`,{className:`btn btn-primary`,style:Q.zoomStartButton,onClick:()=>window.open(m,`_blank`,`noopener,noreferrer`),children:`Open Class Link`}):null]}):null]})}function R({icon:e,title:t,subtitle:n,tone:r,fill:i,variant:a}){return i?(0,E.jsxs)(`div`,{style:{...Q.state,...r===`error`?Q.error:{},...Q.stateFill},children:[a?(0,E.jsx)(s,{variant:a,size:420}):(0,E.jsx)(`div`,{style:Q.illustrationCore,children:(0,E.jsx)(`i`,{className:`fa-solid ${e}`})}),(0,E.jsxs)(`div`,{style:Q.stateFillText,children:[(0,E.jsx)(`span`,{style:Q.stateFillTitle,children:t}),n?(0,E.jsx)(`p`,{style:Q.stateFillSubtitle,children:n}):null]})]}):(0,E.jsxs)(`div`,{style:{...Q.state,...r===`error`?Q.error:{}},children:[(0,E.jsx)(`i`,{className:`fa-solid ${e}`}),(0,E.jsx)(`span`,{children:t})]})}var z=`meet.jit.si`;function B(e){if(!e)return!1;try{return new URL(e.trim()).hostname.toLowerCase()===z}catch{return!1}}function V(e){return e.provider===`jitsi`||B(e.meeting_url)}function H(e){let t=e.meeting_url;if(B(t)){let e=new URL(t.trim()).pathname.split(`/`).filter(Boolean).pop();if(e)return decodeURIComponent(e)}return`ErpliWave-${e.id}`}function U(e){return e.metadata?.jitsi?.password??null}function W(e){return e.metadata?.jitsi?.mode===`embed`?`embed`:`new_tab`}function G(e){if(!e)return!1;try{return/(^|\.)zoom\.us$/i.test(new URL(e.trim()).hostname)}catch{return!1}}function K(e){return e.provider===`zoom`||G(e.meeting_url)}function q(e,t){let n=new Date(e.starts_at).getTime(),r=e.ends_at?new Date(e.ends_at).getTime():n+3600*1e3;return n<=t&&r>=t?{key:`live`,label:`Live Now`,bg:`#fee2e2`,color:`#dc2626`}:n<t?{key:`past`,label:`Finished`,bg:`#e5e7eb`,color:`#475569`}:{key:`upcoming`,label:`Upcoming`,bg:`#dcfce7`,color:`#166534`}}function J(e=[]){let t=e.map(e=>e.batches?.name).filter(Boolean);return t.length?t.join(`, `):`Assigned class`}function Y(e){return new Intl.DateTimeFormat(`en-IN`,{dateStyle:`medium`,timeStyle:`short`}).format(new Date(e))}function X(){return new URLSearchParams(window.location.search).get(D)}function Z(e){let t=new URL(window.location.href);e?t.searchParams.set(D,e):t.searchParams.delete(D);let n=`${t.pathname}${t.search}${t.hash}`;n!==`${window.location.pathname}${window.location.search}${window.location.hash}`&&window.history.pushState({classId:e},``,n)}var Q={container:{width:`100%`,display:`flex`,flexDirection:`column`,gap:24,padding:`20px 28px 60px`,boxSizing:`border-box`},hero:{background:`linear-gradient(135deg, var(--primary-blue), var(--dark-blue))`,color:`white`,borderRadius:20,padding:24,display:`flex`,justifyContent:`space-between`,gap:20,alignItems:`center`,flexWrap:`wrap`,boxShadow:`var(--shadow)`},liveBadge:{display:`inline-flex`,alignItems:`center`,gap:8,fontWeight:900,textTransform:`uppercase`,fontSize:`0.8rem`},dot:{width:9,height:9,borderRadius:999,background:`#ef4444`,display:`inline-block`},heroTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.6rem`,margin:`8px 0`},heroButton:{background:`white`,color:`var(--primary-blue)`,borderColor:`white`},tabs:{display:`inline-flex`,gap:6,flexWrap:`wrap`,background:`rgba(255,255,255,0.85)`,border:`1px solid var(--border)`,borderRadius:999,padding:6,width:`fit-content`,boxShadow:`var(--shadow)`},tabButton:{border:0,background:`transparent`,color:`var(--text-light)`,borderRadius:999,padding:`10px 18px`,fontWeight:900,cursor:`pointer`},tabButtonActive:{background:`var(--primary-blue)`,color:`white`,boxShadow:`0 6px 16px color-mix(in srgb, var(--primary-blue) 24%, transparent)`},grid:{display:`grid`,gridTemplateColumns:`repeat(auto-fill, minmax(320px, 1fr))`,gap:16},card:{background:`rgba(255,255,255,0.9)`,border:`1px solid var(--border)`,borderRadius:18,padding:18,display:`flex`,gap:14,alignItems:`flex-start`,boxShadow:`var(--shadow)`},cardIcon:{width:50,height:50,borderRadius:15,background:`var(--light-blue)`,color:`var(--primary-blue)`,display:`flex`,alignItems:`center`,justifyContent:`center`,flexShrink:0,fontSize:20},cardBody:{flex:1,minWidth:0,display:`flex`,flexDirection:`column`,gap:8},cardTop:{display:`flex`,gap:10,justifyContent:`space-between`,alignItems:`flex-start`},cardTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.12rem`,color:`var(--dark-blue)`,lineHeight:1.25,minWidth:0,overflowWrap:`anywhere`,display:`-webkit-box`,WebkitLineClamp:2,WebkitBoxOrient:`vertical`,overflow:`hidden`},statusPill:{borderRadius:999,padding:`5px 9px`,fontSize:`0.7rem`,fontWeight:900,whiteSpace:`nowrap`,flexShrink:0},meta:{color:`var(--text-light)`,fontSize:`0.88rem`,fontWeight:700,overflowWrap:`anywhere`,minWidth:0},button:{padding:`10px 18px`,width:`fit-content`,marginTop:`auto`},classroom:{display:`flex`,flexDirection:`column`,gap:10},backButton:{width:`fit-content`,border:`1px solid var(--border)`,background:`white`,color:`var(--primary-blue)`,borderRadius:999,padding:`10px 16px`,fontWeight:900,display:`inline-flex`,alignItems:`center`,gap:8,cursor:`pointer`},classroomLayout:{display:`grid`,gridTemplateColumns:`minmax(0, 1fr)`,gap:12,alignItems:`start`},stagePanel:{background:`var(--card-bg)`,border:`1px solid var(--border)`,borderRadius:18,padding:14,boxShadow:`var(--shadow)`},stageHeading:{display:`flex`,justifyContent:`space-between`,gap:12,alignItems:`flex-start`,marginBottom:12},stageTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.25rem`,color:`var(--dark-blue)`,lineHeight:1.2},zoomBadge:{background:`var(--light-blue)`,color:`var(--primary-blue)`,borderRadius:999,padding:`7px 11px`,fontSize:`0.75rem`,fontWeight:900,whiteSpace:`nowrap`},zoomShell:{minHeight:`calc(100vh - var(--nav-h) - 180px)`,borderRadius:18,overflow:`hidden`,background:`linear-gradient(135deg, var(--primary-blue), var(--dark-blue))`,border:`1px solid var(--border)`,display:`grid`,placeItems:`center`},maximiseButton:{position:`absolute`,top:10,right:10,zIndex:3,width:34,height:34,borderRadius:10,border:`1px solid rgba(255,255,255,0.25)`,background:`rgba(17,24,39,0.72)`,color:`#fff`,cursor:`pointer`,display:`grid`,placeItems:`center`,fontSize:14},zoomShellMaximised:{position:`fixed`,inset:0,width:`calc(100vw / var(--app-scale))`,height:`calc(100vh / var(--app-scale))`,zIndex:9998,borderRadius:0,border:`none`},zoomRootMaximised:{minHeight:`100%`,height:`100%`},zoomRoot:{position:`relative`,minHeight:`calc(100vh - var(--nav-h) - 190px)`,width:`100%`,background:`#111827`},jitsiRoot:{width:`100%`,height:`calc(100vh - var(--nav-h) - 190px)`,minHeight:480,border:0},jitsiPassBox:{display:`flex`,flexDirection:`column`,alignItems:`center`,gap:4,background:`rgba(255,255,255,0.12)`,border:`1px solid rgba(255,255,255,0.25)`,borderRadius:14,padding:`12px 22px`,margin:`4px 0`},jitsiPassLabel:{fontSize:`0.72rem`,fontWeight:800,textTransform:`uppercase`,letterSpacing:`0.05em`,opacity:.85},jitsiPassValue:{fontSize:`1.6rem`,fontWeight:900,letterSpacing:`0.12em`,fontFamily:`monospace`},jitsiPassHint:{fontSize:`0.78rem`,opacity:.8},zoomStart:{color:`white`,textAlign:`center`,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`center`,gap:12,padding:28,minHeight:360},zoomStartButton:{background:`white`,color:`var(--primary-blue)`},state:{background:`var(--card-bg)`,border:`1px solid var(--border)`,borderRadius:16,padding:20,display:`flex`,alignItems:`center`,gap:12,color:`var(--dark-blue)`,fontWeight:800},error:{color:`#b91c1c`,borderColor:`#fecaca`,background:`#fff5f5`},stateFill:{flex:1,minHeight:`45vh`,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`center`,gap:8,textAlign:`center`},stateFillText:{display:`flex`,flexDirection:`column`,gap:6,maxWidth:420},stateFillTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.2rem`,color:`var(--dark-blue)`},stateFillSubtitle:{margin:0,color:`var(--text-light)`,fontWeight:600,fontSize:`0.95rem`,lineHeight:1.4},illustrationCore:{width:84,height:84,borderRadius:`50%`,background:`linear-gradient(135deg, var(--light-blue), color-mix(in srgb, var(--primary-blue) 14%, white))`,color:`var(--primary-blue)`,display:`flex`,alignItems:`center`,justifyContent:`center`,fontSize:30,boxShadow:`0 10px 24px color-mix(in srgb, var(--primary-blue) 18%, transparent)`}},$=`
+  @media (max-width: 720px) {
+    .page-illustration {
+      display: none !important;
+    }
+  }
+
+  .live-page {
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+    padding-top: calc(var(--nav-h) + 10px) !important;
+    padding-bottom: 28px !important;
+  }
+
+  @media (max-width: 1024px) {
+    body.live-class-focus .sidebar,
+    body.live-class-focus .sidebar-overlay,
+    body.live-class-focus .hamburger {
+      display: none !important;
+    }
+
+    body.live-class-focus .main-content {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+  }
+
+  .live-container {
+    margin: 0;
+    max-width: none;
+  }
+
+  .live-container-focus {
+    width: min(1500px, calc(100% - 24px)) !important;
+  }
+
+  .live-page-focus {
+    padding-top: calc(var(--nav-h) + 6px) !important;
+  }
+
+  @media (max-width: 980px) {
+    .live-classroom-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .live-container {
+      width: 100% !important;
+      padding: 0 10px !important;
+      gap: 14px !important;
+    }
+
+    .live-header {
+      padding: 14px !important;
+    }
+
+    .live-title {
+      font-size: 1.35rem !important;
+    }
+
+    .live-subtitle {
+      font-size: 0.88rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .live-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .live-card {
+      padding: 14px !important;
+      border-radius: 14px !important;
+    }
+
+    .live-card-title {
+      font-size: 1rem !important;
+    }
+
+    .live-stage-title {
+      font-size: 1rem !important;
+    }
+
+    .live-stage-heading {
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    /* The classroom panel's min-height is calc(100vh - ...), sized for a
+       desktop video call. For the "join in a new tab" / error / loading
+       placeholders (not an actual embedded call) that leaves a huge block
+       of empty green space below the button on mobile, so let those shrink
+       to fit their own content instead. The real embedded video containers
+       (.jitsiRoot / .zoomRoot) are untouched and keep their full height. */
+    .live-zoom-shell:has(.live-zoom-start:only-child) {
+      min-height: 0 !important;
+    }
+
+    .live-zoom-start {
+      min-height: 0 !important;
+      padding: 32px 20px !important;
+    }
+  }
+`;export{O as default};
