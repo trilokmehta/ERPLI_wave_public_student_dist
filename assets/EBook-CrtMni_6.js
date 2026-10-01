@@ -1,0 +1,333 @@
+import{r as e}from"./rolldown-runtime-S-ySWqyJ.js";import{E as t,V as n,X as r,Y as i,_ as a,it as o,u as s,ut as c,zt as l}from"./interactive-CtP7aZWY.js";import{i as u,n as d,r as f,t as p}from"./vendor-BCpWLCR9.js";import{n as m,t as h}from"./contentLevels-CDV_YUuY.js";var g=e(l(),1),_=r();u.workerPort=new p;function v(){let{institute:e,profile:r}=i(),l=t(r?.current_level),[u,d]=(0,g.useState)([]),[f,p]=(0,g.useState)(null);a(`ebook`,!!f);let[h,v]=(0,g.useState)(``),[x,C]=(0,g.useState)(!0),[T,O]=(0,g.useState)(!1),[k,A]=(0,g.useState)(null),[j,M]=(0,g.useState)(0),[N,P]=(0,g.useState)(``);(0,g.useEffect)(()=>()=>{h&&h.startsWith(`blob:`)&&URL.revokeObjectURL(h)},[h]),(0,g.useEffect)(()=>(document.body.classList.toggle(`ebook-reader-focus`,!!f),()=>document.body.classList.remove(`ebook-reader-focus`)),[f]),(0,g.useEffect)(()=>{let t=!0;async function n(){C(!0),A(null);let n=await c(e?.id,`ebook`);t&&(d(n.data),A(n.error),C(!1))}return n(),()=>{t=!1}},[e?.id]);async function F(e){p(e),v(``),M(0),O(!0);let t=await o(e.id);if(t.error){A(t.error),p(null),O(!1);return}try{let n=await fetch(t.data.downloadUrl);if(!n.ok)throw Error(`Failed to download e-book`);if((n.headers.get(`content-type`)||``).includes(`application/pdf`)||w(e)){let e;if(n.body&&typeof n.body.getReader==`function`){let t=n.body.getReader(),r=+(n.headers.get(`Content-Length`)||0),i=0,a=[];for(;;){let{done:e,value:n}=await t.read();if(e)break;a.push(n),i+=n.length,r&&M(Math.round(i/r*100))}e=new Uint8Array(i);let o=0;for(let t of a)e.set(t,o),o+=t.length}else{let t=await n.arrayBuffer();e=new Uint8Array(t),M(100)}let t=new Blob([e],{type:`application/pdf`});v(URL.createObjectURL(t))}else v(t.data.downloadUrl)}catch(e){A(e),p(null)}finally{O(!1)}}function I(){h&&h.startsWith(`blob:`)&&URL.revokeObjectURL(h),p(null),v(``),M(0),O(!1)}let L=f?w(f):!1,R=u.filter(e=>m(e.level,l)),z=R.filter(e=>e.title?.toLowerCase().includes(N.toLowerCase())||e.level&&String(e.level).includes(N));return(0,_.jsxs)(`div`,{className:`page-wrap ebook-page ${f?`ebook-page-reader`:``}`,children:[(0,_.jsx)(`style`,{children:D}),(0,_.jsx)(n,{}),(0,_.jsx)(`div`,{className:`ebook-container ${f?`ebook-container-reader`:``}`,style:E.container,children:f?(0,_.jsx)(b,{book:f,books:u,readerUrl:h,loading:T,isPdf:L,onBack:I,onOpenBook:F,downloadProgress:j}):(0,_.jsxs)(_.Fragment,{children:[(0,_.jsxs)(`div`,{className:`ebook-header-banner premium-banner`,style:{position:`relative`,overflow:`hidden`,borderRadius:`26px`,padding:`32px 24px`,border:`1px solid rgba(255, 255, 255, 0.82)`,display:`flex`,alignItems:`center`,justifyContent:`space-between`,gap:`20px`,marginBottom:`8px`},children:[(0,_.jsxs)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:`8px`,minWidth:0},children:[(0,_.jsx)(`span`,{className:`setup-badge`,style:{background:`var(--light-blue)`,color:`var(--primary-blue)`,display:`inline-block`,alignSelf:`flex-start`,margin:0},children:`Digital Library`}),(0,_.jsx)(`h1`,{style:{fontFamily:`Sora, sans-serif`,fontSize:`2.2rem`,fontWeight:`900`,color:`var(--dark-blue)`,margin:0},children:`E-Books`}),(0,_.jsxs)(`p`,{style:{color:`var(--text-light)`,fontSize:`1.05rem`,fontWeight:`500`,margin:0,lineHeight:1.4},children:[`Choose a book and start reading (`,R.length,` books available).`]})]}),(0,_.jsx)(s,{variant:`ebooks-banner`,size:300})]}),(0,_.jsxs)(`div`,{style:E.searchContainer,className:`ebook-search-wrapper`,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-magnifying-glass`,style:E.searchIcon}),(0,_.jsx)(`input`,{type:`text`,placeholder:`Search by title or level...`,value:N,onChange:e=>P(e.target.value),style:E.searchInput,className:`ebook-search-input`}),N&&(0,_.jsx)(`button`,{onClick:()=>P(``),style:E.clearSearchBtn,children:(0,_.jsx)(`i`,{className:`fa-solid fa-xmark`})})]}),x?(0,_.jsx)(S,{icon:`fa-circle-notch fa-spin`,title:`Loading e-books...`,fill:!0}):null,k?(0,_.jsx)(S,{icon:`fa-triangle-exclamation`,title:k.message,tone:`error`,fill:!0}):null,!x&&!k&&!R.length?(0,_.jsx)(S,{variant:`ebooks-empty`,title:u.length?`No e-books for Level ${l} yet.`:`No e-books assigned yet.`,subtitle:u.length?`More books unlock as your level goes up.`:`Your assigned e-books will show up here.`,fill:!0}):null,!x&&!k&&R.length&&N&&!z.length?(0,_.jsx)(S,{variant:`ebooks-empty`,title:`No books match "${N}"`,subtitle:`Try a different title or level.`,fill:!0}):null,!x&&!k&&z.length?(0,_.jsx)(`div`,{className:`ebook-grid ebk-grid`,children:z.map((e,t)=>(0,_.jsx)(y,{asset:e,index:t,onOpen:()=>F(e)},e.id))}):null]})})]})}function y({asset:e,index:t,onOpen:n}){let r=T(t);return(0,_.jsxs)(`article`,{className:`ebk-card`,style:{animationDelay:`${Math.min(t,12)*40}ms`},children:[(0,_.jsxs)(`div`,{className:`ebk-cover`,style:{background:r.background},onClick:n,children:[(0,_.jsx)(`span`,{className:`ebk-spine`}),(0,_.jsx)(`span`,{className:`ebk-ribbon`}),(0,_.jsx)(`span`,{className:`ebk-cover-title`,children:e.title}),(0,_.jsx)(`span`,{className:`ebk-format`,children:w(e)?`PDF`:`Book`}),(0,_.jsxs)(`span`,{className:`ebk-hover`,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-book-open`}),`Read`]})]}),(0,_.jsxs)(`div`,{className:`ebk-info`,children:[(0,_.jsx)(`h2`,{className:`ebk-title`,onClick:n,children:e.title}),(0,_.jsxs)(`p`,{className:`ebk-meta`,children:[h(e.level),` · `,w(e)?`PDF`:`Book file`]}),(0,_.jsx)(`p`,{className:`ebk-batch`,children:C(e.asset_batches)}),(0,_.jsxs)(`button`,{className:`ebk-btn`,onClick:n,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-book-open`}),`Open reader`]})]})]})}function b({book:e,books:t,readerUrl:n,loading:r,isPdf:i,onBack:a,onOpenBook:o,downloadProgress:s}){let[c,l]=(0,g.useState)(!0),[u,p]=(0,g.useState)(!1),[m,v]=(0,g.useState)(0),[y,b]=(0,g.useState)(1),[S,C]=(0,g.useState)(null),[w,T]=(0,g.useState)(0),[D,O]=(0,g.useState)(null),[k,A]=(0,g.useState)(1),[j,M]=(0,g.useState)({width:0,height:0}),[N,P]=(0,g.useState)(!1),[F,I]=(0,g.useState)(`pen`),[L,R]=(0,g.useState)(`#ef4444`),z=(0,g.useRef)(null),B=(0,g.useRef)({}),V=(0,g.useRef)(!1),H=(0,g.useRef)(null);(0,g.useEffect)(()=>{n&&(l(!0),C(null),v(0),b(1),A(1),B.current={})},[n]),(0,g.useEffect)(()=>{if(!D)return;let e=new ResizeObserver(e=>{for(let t of e)T(t.contentRect.width)});return e.observe(D),()=>e.disconnect()},[D]);function U({numPages:e}){v(e),l(!1)}function W(e){console.error(`[EBook] PDF load error:`,e),C(e),l(!1)}function G(){A(e=>Math.min(3,+(e+.25).toFixed(2)))}function K(){A(e=>Math.max(.5,+(e-.25).toFixed(2)))}function q(e,t,n,r){let i=t.points[n],a=t.points[r];if(!i||!a)return;let o=e.canvas;e.save(),t.tool===`eraser`?(e.globalCompositeOperation=`destination-out`,e.globalAlpha=1,e.lineWidth=26):(e.globalCompositeOperation=`source-over`,e.globalAlpha=t.tool===`marker`?.35:1,e.lineWidth=t.tool===`marker`?16:3),e.strokeStyle=t.color,e.lineCap=`round`,e.lineJoin=`round`,e.beginPath(),e.moveTo(i.x*o.width,i.y*o.height),e.lineTo(a.x*o.width,a.y*o.height),e.stroke(),e.restore()}function J(){let e=z.current;if(!e)return;let t=e.getContext(`2d`);t.clearRect(0,0,e.width,e.height);let n=B.current[y]||[];for(let e of n)for(let n=0;n<e.points.length-1;n++)q(t,e,n,n+1)}(0,g.useEffect)(()=>{J()},[y,j]);function Y(e){let t=z.current.getBoundingClientRect();return{x:(e.clientX-t.left)/t.width,y:(e.clientY-t.top)/t.height}}function X(e){N&&(e.preventDefault(),z.current.setPointerCapture(e.pointerId),V.current=!0,H.current={tool:F,color:L,points:[Y(e)]})}function Z(e){if(!N||!V.current||!H.current)return;e.preventDefault();let t=H.current;t.points.push(Y(e)),q(z.current.getContext(`2d`),t,t.points.length-2,t.points.length-1)}function Q(){if(!V.current)return;V.current=!1;let e=H.current;if(H.current=null,e&&e.points.length>1){let t=B.current[y]||[];t.push(e),B.current[y]=t}}function $(){B.current[y]=[],J()}(0,g.useEffect)(()=>{function e(){p(!!document.fullscreenElement)}return document.addEventListener(`fullscreenchange`,e),()=>document.removeEventListener(`fullscreenchange`,e)},[]);function ee(){let e=document.querySelector(`.ebook-reader-panel`);e&&(document.fullscreenElement?document.exitFullscreen().then(()=>{p(!1)}):e.requestFullscreen().then(()=>{p(!0)}).catch(e=>{window.open(n,`_blank`)}))}return(0,_.jsx)(`div`,{className:`ebook-reader-shell`,style:E.readerShell,children:(0,_.jsx)(`div`,{className:`ebook-reader-layout`,style:E.readerLayout,children:(0,_.jsxs)(`main`,{className:`ebook-reader-panel`,style:E.readerPanel,children:[(0,_.jsxs)(`div`,{className:`ebook-internal-toolbar`,style:E.internalToolbar,children:[(0,_.jsxs)(`button`,{className:`ebook-back-btn`,style:E.backBtn,onClick:a,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-arrow-left`}),(0,_.jsx)(`span`,{children:`Library`})]}),(0,_.jsxs)(`div`,{style:E.toolbarTitleBlock,children:[(0,_.jsx)(`h2`,{style:E.toolbarBookTitle,children:e.title}),(0,_.jsx)(`span`,{style:E.toolbarLevelTag,children:h(e.level)})]}),(0,_.jsx)(`div`,{className:`ebook-toolbar-actions`,style:{display:`flex`,gap:10,marginLeft:`auto`,flexWrap:`wrap`},children:i&&n&&(0,_.jsxs)(_.Fragment,{children:[m>1&&(0,_.jsxs)(`div`,{style:E.pageNavGroup,children:[(0,_.jsx)(`button`,{className:`ebook-action-btn`,style:E.pageNavBtn,disabled:y<=1,onClick:()=>b(e=>Math.max(1,e-1)),children:(0,_.jsx)(`i`,{className:`fa-solid fa-chevron-left`})}),(0,_.jsxs)(`span`,{style:E.pageNavLabel,children:[y,` / `,m]}),(0,_.jsx)(`button`,{className:`ebook-action-btn`,style:E.pageNavBtn,disabled:y>=m,onClick:()=>b(e=>Math.min(m,e+1)),children:(0,_.jsx)(`i`,{className:`fa-solid fa-chevron-right`})})]}),(0,_.jsxs)(`div`,{style:E.pageNavGroup,children:[(0,_.jsx)(`button`,{className:`ebook-action-btn`,style:E.pageNavBtn,onClick:K,disabled:k<=.5,children:(0,_.jsx)(`i`,{className:`fa-solid fa-magnifying-glass-minus`})}),(0,_.jsxs)(`span`,{style:E.pageNavLabel,children:[Math.round(k*100),`%`]}),(0,_.jsx)(`button`,{className:`ebook-action-btn`,style:E.pageNavBtn,onClick:G,disabled:k>=3,children:(0,_.jsx)(`i`,{className:`fa-solid fa-magnifying-glass-plus`})})]}),(0,_.jsxs)(`button`,{className:`ebook-action-btn`,style:{...E.actionButton,...N?E.actionButtonActive:{}},onClick:()=>P(e=>!e),children:[(0,_.jsx)(`i`,{className:`fa-solid fa-pen`,style:{marginRight:8}}),(0,_.jsx)(`span`,{children:N?`Stop Drawing`:`Draw`})]}),(0,_.jsxs)(`button`,{className:`ebook-action-btn`,style:E.actionButton,onClick:ee,children:[(0,_.jsx)(`i`,{className:`fa-solid ${u?`fa-compress`:`fa-expand`}`,style:{marginRight:8}}),(0,_.jsx)(`span`,{children:u?`Exit`:`Fullscreen`})]})]})})]}),i&&n&&N&&(0,_.jsxs)(`div`,{style:E.annotationToolbar,children:[(0,_.jsxs)(`div`,{style:E.toolGroup,children:[(0,_.jsx)(`button`,{style:{...E.toolBtn,...F===`pen`?E.toolBtnActive:{}},onClick:()=>I(`pen`),title:`Pen`,children:(0,_.jsx)(`i`,{className:`fa-solid fa-pen`})}),(0,_.jsx)(`button`,{style:{...E.toolBtn,...F===`marker`?E.toolBtnActive:{}},onClick:()=>I(`marker`),title:`Marker`,children:(0,_.jsx)(`i`,{className:`fa-solid fa-highlighter`})}),(0,_.jsx)(`button`,{style:{...E.toolBtn,...F===`eraser`?E.toolBtnActive:{}},onClick:()=>I(`eraser`),title:`Eraser`,children:(0,_.jsx)(`i`,{className:`fa-solid fa-eraser`})})]}),(0,_.jsxs)(`div`,{style:E.toolGroup,children:[[`#ef4444`,`#2563eb`,`#16a34a`,`#f59e0b`,`#111827`].map(e=>(0,_.jsx)(`button`,{style:{...E.colorSwatch,background:e,...L===e?E.colorSwatchActive:{}},onClick:()=>R(e)},e)),(0,_.jsx)(`input`,{type:`color`,value:L,onChange:e=>R(e.target.value),style:E.colorInput})]}),(0,_.jsx)(`button`,{style:E.toolBtn,onClick:$,title:`Clear page`,children:(0,_.jsx)(`i`,{className:`fa-solid fa-trash`})})]}),(0,_.jsx)(`div`,{style:E.iframeContainer,children:r?(0,_.jsxs)(`div`,{style:E.iframeLoaderOverlay,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-circle-notch fa-spin`,style:{fontSize:`2.5rem`,color:`var(--primary-blue)`,marginBottom:16}}),(0,_.jsx)(`h3`,{style:{fontFamily:`Sora, sans-serif`,color:`var(--dark-blue)`,margin:0,fontWeight:700},children:s>0?`Loading Book (${s}%)`:`Opening your book...`}),(0,_.jsx)(`p`,{style:{color:`var(--text-light)`,fontSize:`0.85rem`,margin:`4px 0 0`},children:`Please wait while the book is prepared.`}),(0,_.jsx)(`div`,{style:E.progressBarBg,children:(0,_.jsx)(`div`,{style:{...E.progressBarFill,width:s>0?`${s}%`:`50%`,left:s>0?0:void 0},className:s>0?``:`ebook-progress-fill`})})]}):i&&n?(0,_.jsxs)(`div`,{ref:O,style:E.pdfScrollArea,children:[c&&(0,_.jsxs)(`div`,{style:E.iframeLoaderOverlay,children:[(0,_.jsx)(`i`,{className:`fa-solid fa-circle-notch fa-spin`,style:{fontSize:`2.5rem`,color:`var(--primary-blue)`,marginBottom:16}}),(0,_.jsx)(`h3`,{style:{fontFamily:`Sora, sans-serif`,color:`var(--dark-blue)`,margin:0,fontWeight:700},children:`Loading PDF Document...`}),(0,_.jsx)(`p`,{style:{color:`var(--text-light)`,fontSize:`0.85rem`,margin:`4px 0 0`},children:`Please wait while the book is prepared.`}),(0,_.jsx)(`div`,{style:E.progressBarBg,children:(0,_.jsx)(`div`,{style:E.progressBarFill,className:`ebook-progress-fill`})})]}),S?(0,_.jsx)(x,{icon:`fa-triangle-exclamation`,title:`Couldn't display this PDF`,detail:(0,_.jsxs)(_.Fragment,{children:[`Please try reopening the book.`,S?.message?(0,_.jsxs)(_.Fragment,{children:[(0,_.jsx)(`br`,{}),(0,_.jsx)(`span`,{style:{fontSize:`0.72rem`,opacity:.7},children:String(S.message)})]}):null]})}):(0,_.jsx)(f,{file:n,onLoadSuccess:U,onLoadError:W,onSourceError:W,loading:null,error:null,children:w>0&&(0,_.jsxs)(`div`,{style:E.pageStage,className:N?`ebook-draw-active`:``,children:[(0,_.jsx)(d,{pageNumber:y,width:Math.max(200,(w-32)*k),renderAnnotationLayer:!0,renderTextLayer:!0,onRenderSuccess:e=>M({width:e.width,height:e.height})}),j.width>0&&(0,_.jsx)(`canvas`,{ref:z,width:j.width,height:j.height,style:{...E.annotationCanvas,width:j.width,height:j.height,pointerEvents:N?`auto`:`none`,cursor:N?F===`eraser`?`cell`:`crosshair`:`default`,touchAction:N?`none`:`auto`},onPointerDown:X,onPointerMove:Z,onPointerUp:Q,onPointerLeave:Q})]})})]}):(0,_.jsx)(x,{icon:`fa-file-lines`,title:`Preview is not available for this file type`,detail:`Ask your teacher to upload this e-book as a PDF so it can open inside the student portal.`})})]})})})}function x({icon:e,title:t,detail:n}){return(0,_.jsxs)(`div`,{style:E.readerState,children:[(0,_.jsx)(`i`,{className:`fa-solid ${e}`}),(0,_.jsx)(`h2`,{children:t}),n?(0,_.jsx)(`p`,{children:n}):null]})}function S({icon:e,title:t,subtitle:n,tone:r,fill:i,variant:a}){return i?(0,_.jsxs)(`div`,{style:{...E.state,...r===`error`?E.error:{},...E.stateFill},children:[a?(0,_.jsx)(s,{variant:a,size:420}):(0,_.jsx)(`div`,{style:E.illustrationCore,children:(0,_.jsx)(`i`,{className:`fa-solid ${e}`})}),(0,_.jsxs)(`div`,{style:E.stateFillText,children:[(0,_.jsx)(`span`,{style:E.stateFillTitle,children:t}),n?(0,_.jsx)(`p`,{style:E.stateFillSubtitle,children:n}):null]})]}):(0,_.jsxs)(`div`,{style:{...E.state,...r===`error`?E.error:{}},children:[(0,_.jsx)(`i`,{className:`fa-solid ${e}`}),(0,_.jsx)(`span`,{children:t})]})}function C(e=[]){let t=e.map(e=>e.batches?.name).filter(Boolean);return t.length?t.join(`, `):`Assigned book`}function w(e){return e.content_type===`application/pdf`||e.metadata?.content_type===`application/pdf`||e.file_name?.toLowerCase().endsWith(`.pdf`)}function T(e){let t=[`linear-gradient(145deg, #2563eb, #0f766e)`,`linear-gradient(145deg, #7c3aed, #2563eb)`,`linear-gradient(145deg, #f59e0b, #dc2626)`,`linear-gradient(145deg, #059669, #0284c7)`,`linear-gradient(145deg, #db2777, #7c3aed)`,`linear-gradient(145deg, #0891b2, #4338ca)`];return{background:t[e%t.length]}}var E={container:{width:`100%`,display:`flex`,flexDirection:`column`,gap:24,padding:`20px 28px 60px`,boxSizing:`border-box`},header:{display:`flex`,justifyContent:`flex-start`,alignItems:`center`,gap:14,background:`linear-gradient(135deg, rgba(255,255,255,0.94), color-mix(in srgb, var(--primary-blue) 9%, white))`,border:`1px solid var(--border)`,borderRadius:18,padding:18,boxShadow:`var(--shadow)`},headerIcon:{width:58,height:58,borderRadius:16,background:`linear-gradient(135deg, var(--primary-blue), var(--dark-blue))`,color:`white`,display:`flex`,alignItems:`center`,justifyContent:`center`,fontSize:24,flexShrink:0},headerText:{flex:1,minWidth:0},title:{fontFamily:`Sora, sans-serif`,fontSize:`2rem`,color:`var(--dark-blue)`,marginBottom:4},subtitle:{color:`var(--text-light)`,fontSize:`1rem`,fontWeight:700},libraryBadge:{background:`var(--light-blue)`,color:`var(--primary-blue)`,borderRadius:999,padding:`10px 16px`,fontWeight:900,display:`flex`,alignItems:`center`,gap:8,whiteSpace:`nowrap`},grid:{display:`grid`,gridTemplateColumns:`repeat(auto-fill, minmax(300px, 1fr))`,gap:16},card:{background:`rgba(255,255,255,0.9)`,border:`1px solid var(--border)`,borderRadius:18,padding:16,display:`flex`,gap:16,boxShadow:`var(--shadow)`,minHeight:164},cover:{width:110,height:154,borderRadius:`6px 14px 14px 6px`,color:`white`,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`space-between`,flexShrink:0,boxShadow:`5px 8px 18px color-mix(in srgb, var(--primary-blue) 30%, transparent)`,position:`relative`,overflow:`hidden`,transition:`transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)`,border:`1px solid rgba(255, 255, 255, 0.15)`},coverSpine:{position:`absolute`,left:0,top:0,bottom:0,width:12,background:`rgba(255,255,255,0.18)`,borderRight:`1px solid rgba(0,0,0,0.12)`},coverRibbon:{position:`absolute`,top:0,right:14,width:12,height:38,background:`#facc15`,borderRadius:`0 0 4px 4px`,boxShadow:`0 2px 6px rgba(0,0,0,0.15)`,zIndex:2},coverTitleText:{fontFamily:`Sora, sans-serif`,fontSize:`0.8rem`,fontWeight:800,textAlign:`center`,color:`white`,width:`100%`,padding:`0 10px 0 16px`,lineHeight:1.25,zIndex:2,marginTop:20,display:`-webkit-box`,WebkitLineClamp:3,WebkitBoxOrient:`vertical`,overflow:`hidden`,textShadow:`0 2px 4px rgba(0,0,0,0.3)`},coverFooter:{position:`absolute`,bottom:10,left:16,right:10,display:`flex`,justifyContent:`space-between`,alignItems:`center`,zIndex:2},coverLevelTag:{fontSize:`0.62rem`,fontWeight:900,background:`rgba(255, 255, 255, 0.22)`,padding:`2px 6px`,borderRadius:999,backdropFilter:`blur(4px)`,color:`white`},coverSpineFormat:{fontSize:`0.62rem`,fontWeight:900,opacity:.9,textTransform:`uppercase`,letterSpacing:`0.5px`,color:`white`},cardBody:{minWidth:0,display:`flex`,flexDirection:`column`,gap:10,flex:1},cardTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.18rem`,color:`var(--dark-blue)`,lineHeight:1.25},meta:{color:`var(--text-light)`,fontSize:`0.88rem`,fontWeight:700},bookChips:{display:`flex`,gap:8,flexWrap:`wrap`},bookChip:{background:`var(--light-blue)`,color:`var(--primary-blue)`,borderRadius:999,padding:`4px 9px`,fontSize:`0.72rem`,fontWeight:900},batchText:{color:`var(--text-main)`,fontSize:`0.92rem`,fontWeight:800},button:{width:`fit-content`,padding:`11px 20px`,marginTop:`auto`},readerShell:{display:`flex`,flexDirection:`column`,gap:12},readerTopbar:{display:`flex`,alignItems:`center`,gap:14,padding:0},actionButton:{border:`1px solid var(--border)`,background:`white`,color:`var(--primary-blue)`,borderRadius:999,padding:`8px 14px`,fontWeight:900,display:`inline-flex`,alignItems:`center`,cursor:`pointer`,fontSize:`0.85rem`,boxShadow:`var(--shadow)`},actionButtonActive:{background:`var(--primary-blue)`,color:`white`,border:`1px solid var(--primary-blue)`},readerLayout:{display:`grid`,gridTemplateColumns:`minmax(0, 1fr)`,gap:16,alignItems:`start`},readerPanel:{height:`calc(100vh - var(--nav-h) - 58px)`,minHeight:560,background:`var(--card-bg)`,border:`1px solid var(--border)`,borderRadius:24,overflow:`hidden`,boxShadow:`var(--shadow)`,display:`flex`,flexDirection:`column`},pdfFrame:{width:`100%`,height:`100%`,border:0,display:`block`,background:`white`},pdfScrollArea:{width:`100%`,height:`100%`,minHeight:0,overflow:`auto`,display:`block`,textAlign:`center`,padding:`12px`,boxSizing:`border-box`},pageStage:{position:`relative`,display:`inline-block`},annotationCanvas:{position:`absolute`,top:0,left:0,zIndex:10},annotationToolbar:{display:`flex`,alignItems:`center`,gap:14,padding:`8px 20px`,borderBottom:`1px solid var(--border)`,background:`rgba(255, 255, 255, 0.75)`,backdropFilter:`blur(12px)`,flexWrap:`wrap`},toolGroup:{display:`flex`,alignItems:`center`,gap:6,border:`1px solid var(--border)`,background:`white`,borderRadius:999,padding:`4px 6px`},toolBtn:{border:`1px solid var(--border)`,background:`white`,color:`var(--primary-blue)`,borderRadius:999,width:32,height:32,display:`inline-flex`,alignItems:`center`,justifyContent:`center`,cursor:`pointer`,fontSize:`0.85rem`},toolBtnActive:{background:`var(--primary-blue)`,color:`white`,border:`1px solid var(--primary-blue)`},colorSwatch:{width:22,height:22,borderRadius:`50%`,border:`2px solid white`,boxShadow:`0 0 0 1px var(--border)`,cursor:`pointer`,padding:0},colorSwatchActive:{boxShadow:`0 0 0 2px var(--primary-blue)`},colorInput:{width:26,height:26,padding:0,border:`none`,background:`none`,cursor:`pointer`},pageNavGroup:{display:`flex`,alignItems:`center`,gap:8,border:`1px solid var(--border)`,background:`white`,borderRadius:999,padding:`4px 10px`,boxShadow:`var(--shadow)`},pageNavBtn:{border:0,background:`transparent`,color:`var(--primary-blue)`,cursor:`pointer`,padding:`4px 6px`,fontSize:`0.85rem`},pageNavLabel:{fontSize:`0.8rem`,fontWeight:800,color:`var(--dark-blue)`,whiteSpace:`nowrap`},readerState:{height:`100%`,minHeight:360,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`center`,textAlign:`center`,gap:12,padding:24,color:`var(--dark-blue)`},readerList:{background:`rgba(255, 255, 255, 0.45)`,border:`1px solid var(--border)`,borderRadius:18,padding:12,boxShadow:`var(--shadow)`,maxHeight:`calc(100vh - var(--nav-h) - 110px)`,overflowY:`auto`},readerListHeader:{color:`var(--primary-blue)`,fontWeight:900,textTransform:`uppercase`,fontSize:`0.75rem`,margin:`4px 4px 10px`},readerBook:{width:`100%`,border:`1px solid var(--border)`,background:`rgba(255,255,255,0.72)`,borderRadius:14,padding:12,display:`flex`,alignItems:`center`,gap:10,marginBottom:10,cursor:`pointer`,color:`var(--dark-blue)`},readerBookActive:{background:`var(--light-blue)`,borderColor:`var(--primary-blue)`},readerBookIcon:{width:38,height:46,borderRadius:9,background:`linear-gradient(135deg, var(--primary-blue), var(--dark-blue))`,color:`white`,display:`flex`,alignItems:`center`,justifyContent:`center`,flexShrink:0},readerBookText:{minWidth:0,textAlign:`left`,display:`flex`,flexDirection:`column`,gap:3,lineHeight:1.2},state:{background:`var(--card-bg)`,border:`1px solid var(--border)`,borderRadius:16,padding:20,display:`flex`,alignItems:`center`,gap:12,color:`var(--dark-blue)`,fontWeight:800},error:{color:`#b91c1c`,borderColor:`#fecaca`,background:`#fff5f5`},stateFill:{flex:1,minHeight:`45vh`,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`center`,gap:8,textAlign:`center`},stateFillText:{display:`flex`,flexDirection:`column`,gap:6,maxWidth:420},stateFillTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.2rem`,color:`var(--dark-blue)`},stateFillSubtitle:{margin:0,color:`var(--text-light)`,fontWeight:600,fontSize:`0.95rem`,lineHeight:1.4},illustrationCore:{width:84,height:84,borderRadius:`50%`,background:`linear-gradient(135deg, var(--light-blue), color-mix(in srgb, var(--primary-blue) 14%, white))`,color:`var(--primary-blue)`,display:`flex`,alignItems:`center`,justifyContent:`center`,fontSize:30,boxShadow:`0 10px 24px color-mix(in srgb, var(--primary-blue) 18%, transparent)`},iframeLoaderOverlay:{position:`absolute`,inset:0,background:`var(--card-bg)`,display:`flex`,flexDirection:`column`,alignItems:`center`,justifyContent:`center`,zIndex:10,borderRadius:20},progressBarBg:{width:`200px`,height:`6px`,background:`var(--light-blue)`,borderRadius:`3px`,marginTop:`16px`,overflow:`hidden`,position:`relative`},progressBarFill:{height:`100%`,width:`50%`,background:`var(--primary-blue)`,borderRadius:`3px`,position:`absolute`,left:`-50%`},searchContainer:{position:`relative`,display:`flex`,alignItems:`center`,background:`rgba(255, 255, 255, 0.8)`,border:`1px solid var(--border)`,borderRadius:16,padding:`0 16px`,height:48,boxShadow:`var(--shadow)`,maxWidth:480,width:`100%`,marginBottom:8},searchIcon:{color:`var(--text-light)`,fontSize:`1rem`,marginRight:10},searchInput:{border:0,outline:`none`,background:`transparent`,width:`100%`,fontSize:`0.95rem`,color:`var(--dark-blue)`,fontWeight:600},clearSearchBtn:{border:0,background:`transparent`,color:`var(--text-light)`,cursor:`pointer`,padding:4,display:`flex`,alignItems:`center`,justifyContent:`center`},iframeContainer:{flex:1,minHeight:0,width:`100%`,position:`relative`,overflow:`hidden`,background:`linear-gradient(135deg, #eef6ff, #ffffff)`},internalToolbar:{height:60,borderBottom:`1px solid var(--border)`,background:`rgba(255, 255, 255, 0.65)`,backdropFilter:`blur(12px)`,display:`flex`,alignItems:`center`,padding:`0 20px`,gap:14,zIndex:5},backBtn:{border:`1px solid var(--border)`,background:`white`,color:`var(--primary-blue)`,borderRadius:999,padding:`8px 14px`,fontWeight:900,display:`inline-flex`,alignItems:`center`,gap:6,cursor:`pointer`,fontSize:`0.85rem`,transition:`all 0.2s ease`},toolbarTitleBlock:{display:`flex`,alignItems:`center`,gap:10,marginLeft:8,minWidth:0},toolbarBookTitle:{fontFamily:`Sora, sans-serif`,fontSize:`1.05rem`,fontWeight:800,color:`var(--dark-blue)`,whiteSpace:`nowrap`,overflow:`hidden`,textOverflow:`ellipsis`,margin:0},toolbarLevelTag:{fontSize:`0.7rem`,fontWeight:900,background:`var(--light-blue)`,color:`var(--primary-blue)`,padding:`3px 8px`,borderRadius:999,whiteSpace:`nowrap`}},D=`
+  @media (max-width: 720px) {
+    .page-illustration {
+      display: none !important;
+    }
+  }
+
+  .ebook-page {
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+    padding-top: calc(var(--nav-h) + 20px) !important;
+    padding-bottom: 28px !important;
+  }
+
+  .ebook-container {
+    margin: 0;
+    max-width: none;
+  }
+
+  .ebook-page-reader {
+    padding-top: calc(var(--nav-h) + 8px) !important;
+  }
+
+  .ebook-container-reader {
+    width: 100% !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ebook-page-reader {
+    padding-bottom: 0 !important;
+  }
+
+  .ebook-back {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ebook-back:hover {
+    border-color: var(--primary-blue) !important;
+    background-color: var(--light-blue) !important;
+    transform: translateX(-4px);
+  }
+
+  .ebook-reader-book {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ebook-reader-book:hover {
+    border-color: var(--primary-blue) !important;
+    background-color: var(--light-blue) !important;
+    transform: translateY(-2px);
+  }
+
+  .ebook-reader-book:active {
+    transform: translateY(0);
+  }
+
+  .ebook-reader-book {
+    position: relative;
+    border-left: 3px solid transparent !important;
+  }
+
+  .ebook-reader-book.active-book-item {
+    border-left-color: var(--primary-blue) !important;
+    background-color: var(--light-blue) !important;
+    color: var(--primary-blue) !important;
+    font-weight: 800;
+  }
+
+  .ebook-card:hover .ebook-premium-cover {
+    transform: perspective(600px) rotateY(-14deg) scale(1.04) !important;
+    box-shadow: 12px 14px 28px color-mix(in srgb, var(--primary-blue) 35%, transparent) !important;
+  }
+
+  .ebook-back-btn:hover {
+    border-color: var(--primary-blue) !important;
+    background-color: var(--light-blue) !important;
+    transform: translateX(-3px);
+  }
+
+  .ebook-search-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+  }
+
+  .ebook-search-wrapper {
+    transition: all 0.2s ease;
+  }
+
+  .ebook-search-wrapper:focus-within {
+    border-color: var(--primary-blue) !important;
+    background-color: white !important;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-blue) 12%, transparent) !important;
+  }
+
+  @media (max-width: 980px) {
+    .ebook-reader-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    .ebook-reader-list {
+      width: 100% !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .ebook-reader-panel {
+      height: calc(100vh - var(--nav-h) - 130px) !important;
+      min-height: 480px !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ebook-page {
+      padding-top: calc(var(--nav-h) + 10px) !important;
+    }
+
+    .ebook-container {
+      width: 100% !important;
+      padding: 0 10px !important;
+      gap: 14px !important;
+    }
+
+    .ebook-header,
+    .ebook-reader-topbar {
+      align-items: center !important;
+      flex-direction: row !important;
+    }
+
+    .ebook-title {
+      font-size: 1.35rem !important;
+      margin-bottom: 2px !important;
+    }
+
+    .ebook-subtitle {
+      font-size: 0.9rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .ebook-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .ebook-card {
+      padding: 12px !important;
+      border-radius: 14px !important;
+    }
+
+    .ebook-card-title {
+      font-size: 1rem !important;
+    }
+
+    .ebook-reader-panel {
+      height: calc(100vh - var(--nav-h) - 120px) !important;
+      min-height: 420px !important;
+      border-radius: 14px !important;
+      max-width: 100% !important;
+    }
+
+    .ebook-reader-title {
+      font-size: 1rem !important;
+    }
+
+    /* Keep the reader from ever forcing horizontal page scroll on mobile */
+    .ebook-page-reader {
+      overflow-x: hidden !important;
+    }
+
+    .ebook-reader-shell,
+    .ebook-reader-layout {
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* Toolbar: allow wrapping and shrink to icon-only buttons so it never
+       overflows and inflates the panel width */
+    .ebook-internal-toolbar {
+      height: auto !important;
+      min-height: 52px;
+      padding: 8px 10px !important;
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+    }
+
+    .ebook-internal-toolbar .ebook-action-btn span,
+    .ebook-back-btn span {
+      display: none !important;
+    }
+
+    .ebook-internal-toolbar .ebook-action-btn i,
+    .ebook-back-btn i {
+      margin-right: 0 !important;
+    }
+
+    .ebook-internal-toolbar .ebook-action-btn,
+    .ebook-back-btn {
+      padding: 8px 10px !important;
+    }
+
+    /* Title can shrink; hide the level tag on very small screens */
+    .ebook-internal-toolbar h2 {
+      font-size: 0.95rem !important;
+    }
+
+    /* Let the action buttons (nav / zoom / draw / fullscreen) wrap onto their
+       own line instead of overflowing and clipping the last button */
+    .ebook-toolbar-actions {
+      margin-left: 0 !important;
+      width: 100% !important;
+      justify-content: flex-start !important;
+      row-gap: 8px !important;
+    }
+  }
+
+  @keyframes indeterminate-progress {
+    0% { left: -50%; }
+    50% { left: 25%; }
+    100% { left: 100%; }
+  }
+
+  .ebook-progress-fill {
+    animation: indeterminate-progress 1.5s infinite linear !important;
+  }
+
+  .ebook-reader-panel:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    background: #000000 !important;
+  }
+
+  .ebook-reader-panel:fullscreen iframe {
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .ebook-action-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ebook-action-btn:hover {
+    border-color: var(--primary-blue) !important;
+    background-color: var(--light-blue) !important;
+    color: var(--primary-blue) !important;
+  }
+
+  /* While drawing, let the annotation canvas capture all pointer input by
+     disabling it on react-pdf's text/annotation layers (which otherwise sit
+     on top of the page and swallow the events). */
+  .ebook-draw-active .react-pdf__Page__textLayer,
+  .ebook-draw-active .react-pdf__Page__annotations,
+  .ebook-draw-active .textLayer,
+  .ebook-draw-active .annotationLayer {
+    pointer-events: none !important;
+    user-select: none !important;
+  }
+
+  /* ─── Bookshelf grid ─── */
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .ebook-grid.ebk-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: 32px 22px !important;
+  }
+  .ebk-card { display: flex; flex-direction: column; gap: 12px; min-width: 0; animation: fadeInUp 0.4s ease both; }
+  .ebk-cover {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 6px 12px 12px 6px;
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18), inset -6px 0 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .ebk-card:hover .ebk-cover {
+    transform: translateY(-4px) rotate(-1deg);
+    box-shadow: 0 18px 32px rgba(15, 23, 42, 0.26), inset -6px 0 12px rgba(0, 0, 0, 0.12);
+  }
+  .ebk-spine { position: absolute; top: 0; bottom: 0; left: 0; width: 12px; background: rgba(0, 0, 0, 0.18); }
+  .ebk-ribbon { position: absolute; top: 0; right: 18px; width: 14px; height: 44px; background: var(--gold, #facc15); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%); }
+  .ebk-cover-title {
+    position: absolute; left: 24px; right: 40px; top: 22px;
+    font-family: Sora, sans-serif; font-weight: 900; font-size: 1.05rem; line-height: 1.25;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .ebk-format {
+    position: absolute; left: 24px; bottom: 14px;
+    font-size: 0.68rem; font-weight: 900; letter-spacing: 1px; opacity: 0.85;
+  }
+  .ebk-hover {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;
+    opacity: 0; transition: opacity 0.2s ease;
+  }
+  .ebk-card:hover .ebk-hover { opacity: 1; }
+
+  .ebk-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .ebk-title {
+    margin: 0; cursor: pointer;
+    font-family: Sora, sans-serif; font-size: 0.98rem; font-weight: 800; line-height: 1.35;
+    color: var(--dark-blue);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .ebk-meta { margin: 0; font-size: 0.8rem; font-weight: 600; color: var(--text-light); }
+  .ebk-batch {
+    margin: 0; font-size: 0.78rem; color: var(--text-light);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ebk-btn {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 8px; height: 34px; padding: 0 16px;
+    border: 0; border-radius: 999px;
+    background: var(--dark-blue); color: #fff;
+    font-weight: 700; font-size: 0.82rem; white-space: nowrap;
+    cursor: pointer; transition: background 0.15s ease;
+  }
+  .ebk-btn:hover { background: var(--primary-blue); }
+
+  @media (max-width: 640px) {
+    .ebook-grid.ebk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 14px !important; }
+    .ebk-cover-title { left: 20px; right: 34px; font-size: 0.9rem; }
+    .ebk-btn { width: 100%; justify-content: center; }
+  }
+`;export{v as default};
