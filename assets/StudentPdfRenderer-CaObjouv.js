@@ -1,0 +1,1 @@
+import{i as e,n as t,r as n,t as r}from"./pdf-reader-q2JadR-g.js";e.workerPort=new r;export{n as Document,t as Page};
